@@ -13,11 +13,21 @@ use Modules\Ticket;
 
 @section('content')
 <div class="container" style="direction:rtl;">
-    <div class="row justify-content-center">
 
+    <div class="row justify-content-center">
+   
 <div class="col-md-8 ">
 <div class="card py-3">
-                       
+@if (session()->has('success'))
+    <div class="alert alert-dismissable alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>
+            {!! session()->get('success') !!}
+        </strong>
+    </div>
+@endif     
 <form method="POST" action="/ticket/store">
 
   
