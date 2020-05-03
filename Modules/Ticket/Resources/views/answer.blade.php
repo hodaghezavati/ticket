@@ -17,7 +17,7 @@ use Modules\Ticket;
 
        
 
-            <?php $t_id = Auth::id();
+            <?php $t_id =$_GET['id'];
             $ticket = DB::select('select * from tickets where id = '.$t_id);
             // print_r($ticket);
             $user_id=$ticket[0]->user_id;
