@@ -73,7 +73,6 @@
                             </li>
                         @endguest
                     </ul>
-                    @include('inc.messages')
                 </div>
             </div>
         </nav>
