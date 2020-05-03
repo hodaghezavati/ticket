@@ -36,7 +36,7 @@ use Illuminate\Database\Query\Builder;
         1 => '#007bff',
         2 => '#28a745',
         3 => '#6c757d',
-        4 => 'orange',
+       
     ];
     // echo $date = Jalalian::forge('last sunday')->format('datetime');;
     ?>
