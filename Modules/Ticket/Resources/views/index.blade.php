@@ -22,15 +22,43 @@ use Illuminate\Database\Query\Builder;
         </strong>
     </div>
 @endif
-    <div class="row justify-content-center">
-    <?php 
-    $userId = Auth::id();
+<?php
+
+
+$userId = Auth::id();
     $users = DB::select('select * from users where  id = '.$userId);
+
+?>
+
+<div >
+<?php
+if($users[0]->lvl==1){
+    $n=0;
+    $q = DB::select('select * from tickets ');
+    foreach ($q as $object){
+        if(empty($object->ticket_id ) and $object->if_closed==0 ){
+            $n++;
+        }
+    }   
+}
+?>
+
+</div>
+    <div class="row justify-content-center">
+    <span class="badge badge-info  mb-3 justify-content-center"><h5>شما <?php echo $n ;?> تیکت پاسخ نداده دارید</h5></span>
+
+    <?php 
+    
+    
     // $ticket = DB::table('ticket')->where('user_id',$userId)->first();;
     // $ticket =DB::table('tickets')
               
     //           ->where('user_id', $userId);
+    if($users[0]->lvl!=1){
     $ticket = DB::select('select * from tickets where  user_id = '.$userId);
+    }elseif($users[0]->lvl==1){
+        $ticket = DB::select('select * from tickets ');
+    }
     $arr_priority=[
         1 => 'فوری',
         2 => 'معمولی',
