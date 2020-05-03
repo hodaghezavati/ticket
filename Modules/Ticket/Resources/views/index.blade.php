@@ -46,10 +46,10 @@ use Illuminate\Database\Query\Builder;
     <tr>
     <th scope="col"></th>
         <th scope="col">موضوع</th>
-        <th scope="col">متن</th>
+        
         <th scope="col">اولویت</th>
         <th scope="col">وضعیت</th>
-        <th scope="col">زمان</th>
+     
     </tr>
   </thead>
   <tbody>
@@ -58,10 +58,10 @@ use Illuminate\Database\Query\Builder;
     <tr>
 <td><?php if($users[0]->lvl==1){ ?><a href="{{ url('/ticket/answer?id='.$object->id) }}" class="btn btn-info">بیشتر</a><?php } ?></td>
         <td>{{ $object->subject }}</td>
-        <td> {{ $object->body }}</td>
+      
         <td>{{ $arr_priority[$object->status]  }}</td>
         <td><span class="badge " style="background-color:<?=$color_status[$object->if_closed ]?>">{{ $arr_status[$object->if_closed ]}}</span></td>
-        <td>{{ $object->created_at }}</td>
+       
     </tr>
         @endif
     @endforeach
