@@ -7,6 +7,10 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use App\Ticket;
 use DB;
+use Illuminate\Support\Str;
+use Session;
+
+
 
 use Auth;
 
@@ -31,9 +35,30 @@ class TicketController extends Controller
             $ticket->token = $_POST["_token"];
             $ticket->user_id = Auth::id();
             $ticket->if_closed =0;
-            $ticket->save();
+          
+            
+
+
+
+
+
+            $id = Str::random(20);
+
+            $validator = \Validator::make(['id'=>$id],['id'=>'unique:table,col']);
+       
+            // if($validator->fails()){
+            //      return $this->randomId();
+            // }
+       
+            $ticket->sh_paygiri= $id;
         // return '123';
-        return view('ticket::ticket\view');
+        $ticket->save();
+         Session::flash('success','شماره پیگیری: '. $id); 
+
+        // return view('ticket::ticket\view');
+        // return view('ticket::index');
+        return back();
+
     }
     /**
      * Display a listing of the resource.
