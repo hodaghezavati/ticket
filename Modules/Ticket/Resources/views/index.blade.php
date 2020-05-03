@@ -11,6 +11,17 @@ use Illuminate\Database\Query\Builder;
 <div class="row mb-4">
 <a href="{{ url('/ticket/create') }}" class="btn btn-success float-right"> ثبت تیکت جدید </a>
 </div>
+<!-- @include('inc.messages') -->
+@if (session()->has('success'))
+    <div class="alert alert-dismissable alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>
+            {!! session()->get('success') !!}
+        </strong>
+    </div>
+@endif
     <div class="row justify-content-center">
     <?php 
     $userId = Auth::id();
