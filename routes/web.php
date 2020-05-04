@@ -39,5 +39,7 @@ Route::get('ticket/create', '\Modules\ticket\Http\Controllers\ticketController@c
 Route::get('user/edit', '\Modules\user\Http\Controllers\UserController@edit');
 Route::post('user/save', '\Modules\user\Http\Controllers\UserController@save');
 Route::post('/ticket/store', '\Modules\ticket\Http\Controllers\TicketController@store');
+Route::get('/ticket/track', '\Modules\ticket\Http\Controllers\TicketController@track');
+
 Route::get('/ticket/answer', '\Modules\ticket\Http\Controllers\TicketController@answer');
 Route::post('/ticket/answersave', '\Modules\ticket\Http\Controllers\TicketController@answersave');
