@@ -100,6 +100,10 @@ class TicketController extends Controller
     {
         return view('ticket::index');
     }
+    public function track()
+    {
+        return view('ticket::track');
+    }
     public function answer()
     {
         return view('ticket::answer');
