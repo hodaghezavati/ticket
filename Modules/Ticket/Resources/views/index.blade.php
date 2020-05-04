@@ -12,7 +12,11 @@ use Illuminate\Database\Query\Builder;
 <a href="{{ url('/ticket/create') }}" class="btn btn-success float-right"> ثبت تیکت جدید </a>
 </div>
 <!-- @include('inc.messages') -->
-@if (session()->has('success'))
+<?php $userId = Auth::id();
+    $users = DB::select('select * from users where  id = '.$userId);
+?>
+
+@if (session()->has('success') && $users[0]->lvl==1)
     <div class="alert alert-dismissable alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -22,13 +26,7 @@ use Illuminate\Database\Query\Builder;
         </strong>
     </div>
 @endif
-<?php
 
-
-$userId = Auth::id();
-    $users = DB::select('select * from users where  id = '.$userId);
-
-?>
 
 <div >
 <?php
@@ -45,8 +43,9 @@ if($users[0]->lvl==1){
 
 </div>
     <div class="row justify-content-center">
+    @if($users[0]->lvl==1)
     <span class="badge badge-info  mb-3 justify-content-center"><h5>شما <?php echo $n ;?> تیکت پاسخ نداده دارید</h5></span>
-
+    @endif
     <?php 
     
     
@@ -95,7 +94,7 @@ if($users[0]->lvl==1){
   @foreach ($ticket as $object)
     @if(empty($object->ticket_id ))
     <tr>
-<td><?php if($users[0]->lvl==1){ ?><a href="{{ url('/ticket/answer?id='.$object->id) }}" class="btn btn-info">بیشتر</a><?php } ?></td>
+<td><?php ?><a href="{{ url('/ticket/answer?id='.$object->id) }}" class="btn btn-info">بیشتر</a><?php  ?></td>
         <td>{{ $object->subject }}</td>
       
         <td>{{ $arr_priority[$object->status]  }}</td>
