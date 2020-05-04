@@ -68,6 +68,7 @@
                                     @if(Auth::user()->lvl==1)
                                         <a href="/user" class="dropdown-item">لیست کاربران</a>
                                         <a href="/ticket" class="dropdown-item">تیکت </a>
+                                        <a href="/ticket/track" class="dropdown-item">پیگیری تیکت </a>
                                     @endif
                                     
                                 </div>
