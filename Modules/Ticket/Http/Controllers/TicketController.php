@@ -100,10 +100,30 @@ class TicketController extends Controller
     {
         return view('ticket::index');
     }
-    public function track()
+    public function track(Request $request)
     {
+        if($_GET){
+            print_r($_GET['sh_paygiri']);
+            $text=rtrim($_GET['sh_paygiri']);
+            $text=ltrim($_GET['sh_paygiri']);
+            // $t = DB::select('select * from tickets where sh_paygiri LIKE'.$text);
+            $t=ticket::where('sh_paygiri', 'like', '%' .$text . '%')->get();
+           
+            if($t ){
+                $t_id=$t[0]->id;
+            }else{
+                return view('ticket::index');
+            }
+            
+            
+            //url('/ticket/answer?id='.$object->id)
+            return redirect('/ticket/answer?id='.$t_id);
+            // return view('ticket::answer::'.$t_id);
+        }
+        
         return view('ticket::track');
     }
+    
     public function answer()
     {
         return view('ticket::answer');
