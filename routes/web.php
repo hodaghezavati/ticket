@@ -43,3 +43,4 @@ Route::get('/ticket/track', '\Modules\ticket\Http\Controllers\TicketController@t
 
 Route::get('/ticket/answer', '\Modules\ticket\Http\Controllers\TicketController@answer');
 Route::post('/ticket/answersave', '\Modules\ticket\Http\Controllers\TicketController@answersave');
+Route::post('/user/store', '\Modules\user\Http\Controllers\UserController@store');
