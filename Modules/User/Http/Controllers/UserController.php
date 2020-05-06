@@ -5,7 +5,7 @@ namespace Modules\User\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-
+use DB;
 class UserController extends Controller
 {
     /**
@@ -33,7 +33,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
+        $t =DB::table('users')
+        ->where('id', $_POST["id"])
+        ->update(['lvl' => $_POST["lvl"]]);
+        // return redirect('/user/edit?id='.$_POST["id"]);
+        return view('user::index');
+
     }
 
     /**
