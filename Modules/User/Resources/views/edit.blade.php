@@ -24,12 +24,15 @@ $users = DB::select('select * from users where id='.$user_id);
      
     ];
 ?>
-
-
+<div class="row justify-content-center mt-5">
+<div class="card py-5" style="width: 38rem; ">
+    <form method="POST" action="/user/store">
+    {{ csrf_field() }}
 @foreach ($level as $key => $node)
 <div class="form-check" id="lvl">
   <input class="form-check-input" type="radio" name="lvl" data-name=" {{ $node }}" id="{{ $key }}" value="{{ $key }}" <?php if($users[0]->lvl ==$key) {echo 'checked';} ?> >
   <div class="clearfix"></div>
+  <input  name="id" class="form-control d-none" placeholder="" value="{{$_GET['id']}}" style="display:none;">
 
   <label class="form-check-label" for="exampleRadios1">
    {{ $node }}
@@ -42,9 +45,11 @@ $users = DB::select('select * from users where id='.$user_id);
 
 </br>
 <div class="d-block">
-<a href="{{ url('/user/save/'.$user_id) }}" class="btn btn-success">ذخیره</a>
+<button class="btn btn-success btn-submit float-right">ذخیره</button>
 </div>
 </div>
 </div>
-
+</form>     
+</div>
+</div>
 @endsection
