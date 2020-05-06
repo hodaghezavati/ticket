@@ -29,10 +29,15 @@ $users = DB::select('select * from users ');
   <tbody>
   @foreach ($users as $object)
     <tr>
-    <td scope='col'><a href="{{ url('/user/edit/'.$object->id) }}" class="btn btn-info">ویرایش</a></td>
+    <td scope='col'><a href="{{ url('/user/edit?id='.$object->id) }}" class="btn btn-info">ویرایش</a></td>
         <td> {{ $object->name }}</td>
         <td>{{ $object->email }}</td>
-        <td>{{ $level[$object->lvl]  }}</td>
+        @if ( $object->lvl==1)
+        <td>ادمین</td>
+        @endif
+        @if ( $object->lvl==0)
+        <td>کاربر</td>
+        @endif
         
     </tr>
     @endforeach
